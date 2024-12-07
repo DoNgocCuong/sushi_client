@@ -1,0 +1,119 @@
+@charset "UTF-8";
+.container-menu {
+  padding-top: 13%;
+  /* Đẩy .container-menu xuống đúng bằng chiều cao của header */ }
+
+span {
+  color: #00FF00; }
+
+button,
+select {
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Màu nền */
+  color: #00FF00;
+  /* Màu chữ bên trong input */
+  font-family: Arial, sans-serif;
+  /* Kiểu chữ */
+  font-size: 16px;
+  /* Kích thước chữ */
+  padding: 5px;
+  /* Khoảng cách giữa chữ và viền */
+  border: 1px solid #ccc;
+  /* Đường viền của input */
+  border-radius: 4px;
+  /* Bo góc viền */ }
+
+option {
+  background-color: #312020; }
+
+.header-menu {
+  width: 100%; }
+
+.header-menu ul li {
+  list-style: none; }
+
+.shopping-cart-menu ul,
+.header-menu ul {
+  display: flex;
+  align-items: center;
+  /* Căn giữa nội dung theo chiều ngang */
+  text-align: center; }
+
+.header-menu .total-select > li {
+  width: 33%; }
+
+.branch-menu,
+.dish-menu,
+.price-menu {
+  margin-left: 15%; }
+
+.price-menu li:nth-child(3) button {
+  margin-left: 10px; }
+
+.shopping-cart-menu li {
+  color: #00FF00;
+  font-size: 30px;
+  list-style: none;
+  float: right;
+  margin-right: 20px; }
+
+.content-menu {
+  display: flex;
+  /* Sử dụng Flexbox để xếp các item theo hàng */
+  justify-content: space-between;
+  /* Phân bố đều các item trong hàng */
+  flex-wrap: wrap;
+  /* Cho phép các item chuyển sang hàng mới nếu không đủ không gian */
+  gap: 50px;
+  /* Khoảng cách giữa các item */
+  margin: 0% 3%;
+  padding-top: 7%; }
+
+.content-menu li {
+  list-style: none;
+  width: 30%;
+  /* Đặt chiều rộng cố định cho mỗi sản phẩm */
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Màu nền */
+  display: flex;
+  flex-direction: column;
+  /* Xếp nội dung theo chiều dọc */
+  justify-content: space-between;
+  /* Phân bổ đều nội dung trong item */
+  align-items: center;
+  /* Căn giữa nội dung theo chiều ngang */
+  text-align: center;
+  height: auto;
+  /* Đặt chiều cao tự động */
+  min-height: 400px;
+  /* Chiều cao tối thiểu cho các item */
+  border-radius: 10%;
+  position: relative; }
+
+.content-menu button {
+  border: 0px solid #ccc !important;
+  /* Đường viền của input */
+  border-radius: 4px;
+  /* Bo góc viền */
+  float: right;
+  padding-bottom: 0px !important;
+  position: absolute;
+  right: 4%;
+  top: 4%;
+  font-size: 35px;
+  transition: transform 0.3s ease, background-color 0.3s ease; }
+
+button:hover {
+  background-color: #45a049;
+  /* Thay đổi màu nền khi hover */ }
+
+/* Khi nhấn nút, nút sẽ có hiệu ứng nhảy */
+button:active {
+  transform: translateY(-10px);
+  /* Nút nhảy lên một chút khi click */
+  background-color: #3e8e41;
+  /* Thay đổi màu nền khi nhấn */ }
+
+.content-menu p:nth-child(5) {
+  color: #e75d0c; }

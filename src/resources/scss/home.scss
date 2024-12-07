@@ -1,0 +1,101 @@
+.container_home-image {
+    padding-top: 9%;
+}
+.content-menu .img-branch,
+.products_outstanding .img-outs{
+    width: 70%;
+}
+.container_home-image .picture-home img{
+    width: 100%;
+}
+/* Đảm bảo tất cả item trong danh sách có chiều cao và chiều dài đồng đều */
+
+.products_outstanding ul {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: stretch; /* Đảm bảo các item kéo dài để có cùng chiều cao */
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+}
+
+/* Định dạng từng sản phẩm */
+
+.products_outstanding ul li {
+    list-style: none;
+    width: 30%; /* Đặt chiều rộng cố định cho mỗi sản phẩm */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.2); /* Màu nền */
+    display: flex;
+    flex-direction: column; /* Xếp nội dung theo chiều dọc */
+    justify-content: space-between; /* Phân bổ đều nội dung trong item */
+    align-items: center; /* Căn giữa nội dung theo chiều ngang */
+    text-align: center;
+    height: auto; /* Đặt chiều cao tự động */
+    min-height: 400px; /* Chiều cao tối thiểu cho các item */
+    border-radius: 10%;
+}
+
+/* Đảm bảo ảnh có kích thước đồng bộ */
+.img-products-branch,
+.img-products_outstanding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px ;/* Chiều cao cố định cho vùng ảnh */
+    margin-bottom: 10px;
+}
+.img-products-branch img,
+.img-products_outstanding img {
+    max-width: 100%; /* Đảm bảo ảnh không vượt quá vùng chứa */
+    max-height: 100%; /* Đảm bảo ảnh vừa khung */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+
+}
+
+/* Văn bản sản phẩm */
+.content-menu p,
+.products_outstanding p {
+    text-align: center;
+    font-size: 20px;
+    color:#ffff;
+    margin: 4% 0;
+    word-wrap: break-word; /* Đảm bảo văn bản không bị tràn */
+}
+
+/* Đảm bảo khoảng cách và bố cục nhất quán */
+.products_outstanding ul li p:last-child {
+    margin-top: auto; /* Đẩy giá sản phẩm xuống cuối */
+    color:#b13e11;
+}
+
+.info-header{
+    text-align: center;
+    margin:25px 0;
+}
+.info-title{
+    font-size: 35px;
+    color: #00FF00;
+    margin-top: 4%;
+    margin-bottom:  6%;
+}
+.info-text ul li:nth-child(1){
+    list-style: none;
+    width: 70%;
+}
+.info-text ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 3%
+    
+}
+.info-text h3{
+    font-size: 30px;
+    color: #00FF00;
+}
+.info-tetx_para{
+    font-size: 25px;
+    color: #FFFF;
+}
+.products_outstanding{
+    padding-bottom: 12%;
+}
