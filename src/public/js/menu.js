@@ -1,5 +1,43 @@
 
-var searchApi = "http://localhost:3000/menu/api";  
+var searchApi = "http://localhost:3000/menu/api_search"; 
+var cartApi="http://localhost:3000/menu/api_cart"
+console.log(sessionStorage.getItem("email"));
+
+
+
+
+function handleCart(){
+    var btnCarts=document.querySelectorAll('.addCart');
+    btnCarts.forEach(function(btnCart) {  
+        btnCart.onclick = function(){
+            var parentLi = btnCart.closest('li');  
+            var mamon = parentLi.getAttribute('data-mamon');  
+            fetch(cartApi, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    mamon: mamon,
+                    email:sessionStorage.getItem("email")
+                })
+            })
+            .then(response => response.json())  
+            .then(data => {
+                console.log('Success:', data);
+                alert('thêm món vào giỏ hàng thành công.')  
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi thêm món vào giỏ hàng.');
+            });
+        }
+    });
+    
+}
+
+
+
 
 
 function handleGetSearch(callback) {
@@ -41,3 +79,4 @@ function renderSearch(searchs) {
 }
 
 handleGetSearch(renderSearch);
+handleCart();

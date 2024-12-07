@@ -61,11 +61,11 @@
                 </ul>               
             </li>
         </ul>
-        <ul class="content-menu">
+       <ul class="content-menu">
             {{#if products}}
                 {{#each products}}
-                    <li>
-                        <div><button>+</button></div>
+                    <li data-mamon="{{this.MAMON}}">
+                        <div><button class="addCart">+</button></div>
                         <div class="img-products-branch">
                             <img src="{{this.URL}}" alt="" class="img-branch">
                         </div>
@@ -77,8 +77,8 @@
             {{else}}
                 <p>Không có sản phẩm nào để hiển thị</p>
             {{/if}}       
-        
         </ul>
+
     </div>
     
 </div>

@@ -44,7 +44,8 @@ function btnLogin() {
         userNameInput.classList.remove("error");
         passwordInput.classList.remove("error");
         //Lưu tên tài khoản vào biến môi trường để hiển thị ở trang home
-        sessionStorage.setItem("userName", data.fullName);
+        sessionStorage.setItem("FullName", data.fullName);
+        sessionStorage.setItem("email", userName);
         // set lại bit trạng tháis
         console.log(data.fullName);
         // Di chuyển đến trong home

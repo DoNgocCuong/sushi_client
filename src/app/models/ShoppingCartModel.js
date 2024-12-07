@@ -1,31 +1,24 @@
 const db = require('../../config/db'); // Import kết nối MySQL
-
-class ShoppingCart {
-    // Lấy giỏ hàng của một khách hàng
-    static getCartByCustomerId(customerId) {
+class ShoppingCartModel {
+    static getProductsCart(email) {
         return new Promise((resolve, reject) => {
-            const query = `SELECT * FROM GIOHANG WHERE customerId = ?`;
-            db.query(query, [customerId], (err, results) => {
+            // Bao quanh email bằng dấu nháy đơn trong câu lệnh SQL
+            const query = `CALL render_Cart(${db.escape(email)})`;
+
+       
+            console.log('Query đang chạy:', query);  // Log truy vấn SQL
+
+            db.query(query, (err, results) => {
                 if (err) {
+                    console.error('Lỗi SQL:', err);  // Log lỗi SQL
                     return reject(err);
                 }
-                resolve(results);
-            });
-        });
-    }
 
-    // Thêm món vào giỏ hàng
-    static addToCart(productId, customerId) {
-        return new Promise((resolve, reject) => {
-            const query = `INSERT INTO GIOHANG (productId, customerId) VALUES (?, ?)`;
-            db.query(query, [productId, customerId], (err, results) => {
-                if (err) {
-                    return reject(err);
-                }
-                resolve(results);
+                const cartResults = results[0]; // Giả sử dữ liệu trả về nằm ở mảng [0]
+                console.log('Kết quả trả về từ DB:', cartResults);  // Log kết quả trả về
+                resolve(cartResults);
             });
         });
     }
 }
-
-module.exports = ShoppingCart;
+module.exports = ShoppingCartModel;

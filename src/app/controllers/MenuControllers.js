@@ -59,6 +59,32 @@ class loginController {
             res.status(500).send('Lỗi server');
         }
     }
+    async addCart(req, res) {
+        const { email, mamon } = req.body; 
+    
+        // Kiểm tra tham số
+        if (!email || !mamon) {
+            console.log(mamon);
+            console.log(email);
+            return res.status(400).json({ error: 'Thiếu thông tin cần thiết.' });
+        }
+    
+        try {
+            const addDish = await MenuModel.addCarts(email, mamon);
+            console.log('addDish:' ,addDish);
+    
+            // Kiểm tra kết quả trả về từ model
+            if (addDish && addDish.affectedRows > 0) {
+                return res.json({ message: 'Thêm món vào giỏ hàng thành công.' });
+            } else {
+                return res.status(404).json({ error: 'Không thể thêm món vào giỏ hàng.' });
+            }
+        } catch (err) {
+            console.error('Lỗi khi thêm sản phẩm:', err);
+            return res.status(500).json({ error: 'Đã xảy ra lỗi khi thêm sản phẩm.' });
+        }
+    }
+    
 }
 
 module.exports = new loginController();

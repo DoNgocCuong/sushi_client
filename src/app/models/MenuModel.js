@@ -76,40 +76,26 @@ class MenuModel{
     }
     
 
-    
-    // static filterProducts(branchId, dishTypeId, priceRange) {
-    //     return new Promise((resolve, reject) => {
-    //         let query = 'SELECT * from MONAN ma join LOAIMON lm on ma.maloai=lm.maloai join THUCDONCHINHANH tdcn on ma.mamon=tdcn.mamon join CHINHANH cn on cn.machinhanh=tdcn.machinhanh WHERE 1=1'; // Query cơ bản
-    
-    //         if (branchId) {
-    //             query += ` AND cn.MACHINHANH = ${db.escape(branchId)}`;
-    //         }
-    
-    //         if (dishTypeId) {
-    //             query += ` AND lm.MALOAI = ${db.escape(dishTypeId)}`;
-    //         }
-    
-    //         if (priceRange) {
-    //             if (priceRange === '1') {
-    //                 query += ' AND ma.GIA BETWEEN 0 AND 50000';
-    //             } else if (priceRange === '2') {
-    //                 query += ' AND ma.GIA BETWEEN 50000 AND 100000';
-    //             } else if (priceRange === '3') {
-    //                 query += ' AND ma.GIA > 100000';
-    //             }
-    //         }
-    
-    //         db.query(query, (err, results) => {
-    //             if (err) {
-    //                 console.error('Lỗi khi thực hiện truy vấn:', err);
-    //                 reject(err);
-    //             } else {
-    //                 resolve(results);
-    //             }
-    //         });
-    //     });
-    // }
-    
+    static addCarts(email,mamon){
+
+        return new Promise((resolve, reject) => {
+          
+
+            const query = `CALL insert_Cart(${db.escape(email)},${db.escape(mamon)})`;
+            console.log(query);
+
+            db.query(query, (err, results) => {
+                if (err) {
+                    console.error('Lỗi khi thực hiện truy vấn:', err);
+                    reject(err);
+                } else {
+                    console.log('kq:',results );
+                    resolve(results);
+                }
+            });
+        });
+    }
+
 
 }
 module.exports = MenuModel;
