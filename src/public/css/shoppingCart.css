@@ -91,9 +91,9 @@
   /* Khoảng cách hợp lý giữa các thành phần */ }
 
 .quantity-btn {
-  width: 20px;
+  width: 40px;
   /* Tăng kích thước nút để dễ nhấn hơn */
-  height: 20px;
+  height: 40px;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
