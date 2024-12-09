@@ -1,100 +1,209 @@
-.container-menu {
-    padding-top:13%; /* Đẩy .container-menu xuống đúng bằng chiều cao của header */
-}
-span{
-
-    color:#00FF00;
-}
-button,
-select {
-    background-color: rgba(0, 0, 0, 0.2); /* Màu nền */
-    color: #00FF00;; /* Màu chữ bên trong input */
-    font-family: Arial, sans-serif; /* Kiểu chữ */
-    font-size: 16px; /* Kích thước chữ */
-    padding: 5px; /* Khoảng cách giữa chữ và viền */
-    border: 1px solid #ccc; /* Đường viền của input */
-    border-radius: 4px; /* Bo góc viền */
-}
-option{
-    background-color: rgb(49, 32, 32); 
-}
-.header-menu{
-    width:100%;
-}
-.header-menu ul li{
-    list-style: none;
-    
-    
-}
-.shopping-cart-menu ul,
-.header-menu ul{
-    display: flex;
-    align-items: center; /* Căn giữa nội dung theo chiều ngang */
-    text-align: center;
-    
-}
-.header-menu .total-select>li{
-    width: 33%;
-}
-.branch-menu,
-.dish-menu,
-.price-menu{
-    margin-left:15%;
-}
-.price-menu li:nth-child(3) button{
-   margin-left:10px;
-}
-.shopping-cart-menu li{
-    color: #00FF00;
-    font-size: 30px;
-    list-style: none;
-    float:right;
-    margin-right: 20px;
-}
-.content-menu {
-    display: flex; /* Sử dụng Flexbox để xếp các item theo hàng */
-    justify-content: space-between; /* Phân bố đều các item trong hàng */
-    flex-wrap: wrap; /* Cho phép các item chuyển sang hàng mới nếu không đủ không gian */
-    gap: 50px; /* Khoảng cách giữa các item */
-    margin:0% 3%;
-    padding-top: 7%;
+.container-menu{
+    margin-top: 115px;
+    padding-top:30px;
 }
 
-.content-menu li{
-    list-style: none;
-    width: 30%; /* Đặt chiều rộng cố định cho mỗi sản phẩm */
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.2); /* Màu nền */
-    display: flex;
-    flex-direction: column; /* Xếp nội dung theo chiều dọc */
-    justify-content: space-between; /* Phân bổ đều nội dung trong item */
-    align-items: center; /* Căn giữa nội dung theo chiều ngang */
-    text-align: center;
-    height: auto; /* Đặt chiều cao tự động */
-    min-height: 400px; /* Chiều cao tối thiểu cho các item */
-    border-radius: 10%;
+
+.shopping-cart-menu{
     position: relative;
 }
-.content-menu button{
-    border: 0px solid #ccc !important; /* Đường viền của input */
-    border-radius: 4px; /* Bo góc viền */ 
-    float:right;
-    padding-bottom: 0px !important;
+
+.shopping-cart-menu a {
     position: absolute;
-    right:4%;
-    top:4%;
-    font-size: 35px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-button:hover {
-    background-color: #45a049; /* Thay đổi màu nền khi hover */
+    top: 5px;
+    right: 5px;
+    color: #0fcd1b; /* Màu sắc cho biểu tượng nếu cần */
+    font-size: 40px; /* Kích thước biểu tượng */
+    text-decoration: none; 
 }
 
-/* Khi nhấn nút, nút sẽ có hiệu ứng nhảy */
-button:active {
-    transform: translateY(-10px); /* Nút nhảy lên một chút khi click */
-    background-color: #3e8e41; /* Thay đổi màu nền khi nhấn */
+
+.shopping-cart-menu li.ti-shopping-cart {
+    list-style: none; /* Loại bỏ dấu chấm */
 }
-.content-menu p:nth-child(5){
-    color:#e75d0c;
+
+.header-menu ul{
+    list-style: none;
 }
+
+
+
+/* Căn chỉnh các phần tử trong .total-select */
+.header-menu .total-select {
+    display: flex; /* Dùng Flexbox để căn chỉnh */
+    justify-content: space-between; /* Căn đều các item */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    width: 100%; /* Chiếm hết chiều rộng của container */
+    padding: 10px 0;
+    margin-top: 30px;
+}
+
+
+.total-select li{
+    list-style: none;
+}
+
+.total-select li ul{
+    text-align: center;
+
+}
+
+.header-menu .total-select > li {
+    width: 32%; /* Chia mỗi item chiếm 1/3 chiều rộng */
+    display: flex;
+    flex-direction: column; /* Xếp các thẻ select theo chiều dọc */
+    align-items: flex-start; /* Căn trái cho các select */
+    list-style:none;
+}
+
+.header-menu .total-select > li span {
+    font-weight: bold; /* Làm đậm nhãn */
+    color: #e75d0c;
+    margin-bottom: 5px; /* Khoảng cách giữa nhãn và select */
+
+}
+
+.header-menu .total-select > li select {
+    width: 100%; /* Đảm bảo select chiếm hết chiều rộng của item */
+    padding: 8px; /* Khoảng cách giữa chữ và viền */
+    background-color: rgba(0, 0, 0, 0.2); /* Màu nền cho select */
+    color: #04f008; /* Màu chữ trong select */
+    font-size: 16px; /* Kích thước chữ */
+    border: 1px solid #ccc; /* Đường viền cho select */
+    border-radius: 4px; /* Bo góc */
+    list-style:none;
+}
+
+/* Cải thiện hiển thị khi hover lên select */
+.header-menu .total-select > li select:hover {
+    background-color: rgba(0, 0, 0, 0.3); /* Đổi màu nền khi hover */
+}
+
+.header-menu .total-select > li select:focus {
+    border-color: #00FF00; /* Đổi màu viền khi select được focus */
+}
+
+
+
+
+
+
+/* Grid Layout cho phần content-menu */
+.content-menu {
+    display: grid; /* Sử dụng Grid để tạo layout */
+    grid-template-columns: repeat(3, 1fr); /* Chia ra 3 cột đều */
+    gap: 20px; /* Khoảng cách giữa các item */
+    padding: 20px 0;
+    margin: 0;
+}
+
+/* Các item trong content-menu */
+.content-menu li {
+    list-style: none;
+    background-color: rgba(2, 2, 2, 0.7); 
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center; 
+    text-align: center;
+    height: auto; /* Chiều cao tự động */
+    min-height: 400px; /* Chiều cao tối thiểu cho mỗi item */
+    border-radius: 8px;
+    position: relative;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng hover cho các item */
+.content-menu li:hover {
+    transform: translateY(-10px); /* Nâng item lên khi hover */
+    background-color: rgba(0, 0, 0, 0.3); /* Màu nền khi hover */
+}
+
+.container-menu p{
+    color:#fff;
+}
+.img-products-branch {
+    width: 100%;
+    height: 250px; /* Đặt chiều cao cố định cho ảnh */
+    overflow: hidden; /* Ẩn phần thừa của ảnh */
+    border-radius: 8px; /* Bo góc ảnh */
+    margin-bottom: 15px; /* Khoảng cách giữa ảnh và text */
+}
+
+.img-products-branch img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Giữ tỉ lệ ảnh, crop nếu cần */
+}
+
+.content-menu button {
+    border: 0px solid #ccc !important;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #08e50c;
+    font-size: 20px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.content-menu button:hover {
+    background-color: #45a049; /* Màu nền khi hover */
+}
+
+.content-menu button:active {
+    transform: translateY(-3px); /* Hiệu ứng nhấn */
+    background-color: #3e8e41;
+}
+
+p {
+    margin: 5px 0;
+}
+
+/* Điều chỉnh font size cho giá */
+.content-menu li p:nth-child(3) {
+    color: #e75d0c;
+    font-weight: bold;
+}
+
+/* Đảm bảo không có overflow */
+body {
+    overflow-x: hidden;
+}
+
+
+/* Định dạng chung cho các thẻ select */
+select {
+    background-color: rgba(0, 0, 0, 0.2); /* Màu nền */
+    color: #e75d0c; /* Màu chữ */
+    font-family: Arial, sans-serif; /* Kiểu chữ */
+    font-size: 16px; /* Kích thước chữ */
+    padding: 10px; /* Khoảng cách giữa chữ và viền */
+    border: 1px solid #ccc; /* Đường viền */
+    border-radius: 4px; /* Bo góc viền */
+    width: 100%; /* Chiều rộng 100% để phù hợp với các thẻ cha */
+}
+
+/* Định dạng cho các thẻ option */
+option {
+    background-color: rgb(12, 6, 6); /* Màu nền */
+    color: #e75d0c; /* Màu chữ */
+    font-size: 16px; /* Kích thước chữ */
+    padding: 10px; /* Khoảng cách giữa chữ và viền */
+}
+
+/* Hiệu ứng hover cho option */
+option:hover {
+    background-color: #45a049; /* Màu nền khi hover */
+    color: white; /* Màu chữ khi hover */
+}
+
+/* Hiệu ứng khi chọn option */
+option:checked {
+    background-color: #c9840c; /* Màu nền khi được chọn */
+    color: white; /* Màu chữ khi chọn */
+}
+

@@ -6,7 +6,7 @@ class ShoppingCartModel {
             const query = `CALL render_Cart(${db.escape(email)})`;
 
        
-            console.log('Query đang chạy:', query);  // Log truy vấn SQL
+          //  console.log('Query đang chạy:', query);  // Log truy vấn SQL
 
             db.query(query, (err, results) => {
                 if (err) {
@@ -15,7 +15,7 @@ class ShoppingCartModel {
                 }
 
                 const cartResults = results[0]; // Giả sử dữ liệu trả về nằm ở mảng [0]
-                console.log('Kết quả trả về từ DB:', cartResults);  // Log kết quả trả về
+              //  console.log('Kết quả trả về từ DB:', cartResults);  // Log kết quả trả về
                 resolve(cartResults);
             });
         });

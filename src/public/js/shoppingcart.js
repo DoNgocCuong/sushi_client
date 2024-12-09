@@ -5,30 +5,7 @@ console.log(sessionStorage.getItem("fullname"));
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Lấy tất cả các nút tăng/giảm
-    const quantityContainers = document.querySelectorAll(".cart-item_quantity");
 
-    quantityContainers.forEach((container) => {
-        const decreaseBtn = container.querySelector(".decrease");
-        const increaseBtn = container.querySelector(".increase");
-        const quantityInput = container.querySelector(".quantity-input");
-
-        // Xử lý nút giảm
-        decreaseBtn.addEventListener("click", () => {
-            let currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-            }
-        });
-
-        // Xử lý nút tăng
-        increaseBtn.addEventListener("click", () => {
-            let currentValue = parseInt(quantityInput.value);
-            quantityInput.value = currentValue + 1;
-        });
-    });
-});
 
 function handleGetCart(callback) {
     document.addEventListener("DOMContentLoaded", function () {
@@ -46,14 +23,13 @@ function handleGetCart(callback) {
 }
     
 function renderCart(carts) {
-    var listDish = document.querySelector('.shopping-cart_container');
+    var listDish = document.querySelector('.shopping-cartContainer');
     var htmls = carts.map(function (dish) {
-        console.log(dish);
         return `
             <li class="cart-item">
                 <div class="description">
                     <div class="cart-item_img">
-                        <img src="${dish.url}" alt="${dish.tenmon}">  <!-- Sửa alt ở đây -->
+                        <img src="${dish.url}" alt="${dish.tenmon}">  
                     </div>
                     <div class="cart-item_des">
                         <p>${dish.tenmon}</p>
@@ -80,6 +56,29 @@ function renderCart(carts) {
         `;
     });
     listDish.innerHTML = htmls.join('');
+
+    // Sau khi render xong, gắn sự kiện tăng/giảm số lượng
+    const quantityContainers = document.querySelectorAll(".cart-item_quantity");
+
+    quantityContainers.forEach((container) => {
+        const decreaseBtn = container.querySelector(".decrease");
+        const increaseBtn = container.querySelector(".increase");
+        const quantityInput = container.querySelector(".quantity-input");
+
+        // Xử lý nút giảm
+        decreaseBtn.addEventListener("click", () => {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        // Xử lý nút tăng
+        increaseBtn.addEventListener("click", () => {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+    });
 }
 
 

@@ -47,7 +47,7 @@ function btnLogin() {
         sessionStorage.setItem("FullName", data.fullName);
         sessionStorage.setItem("email", userName);
         // set lại bit trạng tháis
-        console.log(data.fullName);
+        //console.log(data.fullName);
         // Di chuyển đến trong home
         window.location.href = "/";
       })

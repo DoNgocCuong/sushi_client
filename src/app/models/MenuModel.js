@@ -16,7 +16,7 @@ class MenuModel{
                 console.error('Lỗi khi thực hiện truy vấn:', err);
                 return callback(err, null);
             }
-            console.log('Kết quả từ database:', results); // Log kết quả từ database
+           // console.log('Kết quả từ database:', results); // Log kết quả từ database
             callback(null, results);
         });
     }
@@ -27,7 +27,7 @@ class MenuModel{
                 console.error('Lỗi khi thực hiện truy vấn:', err);
                 return callback(err, null);
             }
-            console.log('Kết quả từ database:', results); // Log kết quả từ database
+           // console.log('Kết quả từ database:', results); // Log kết quả từ database
             callback(null, results);
         });
     }
@@ -65,8 +65,8 @@ class MenuModel{
                     // Nếu kết quả có nhiều mảng, lấy mảng đầu tiên (dữ liệu món ăn)
                     const filteredResults = results[0]; // Giả sử kết quả trả về là mảng ở index 0
     
-                    console.log(query);
-                    console.log(filteredResults);
+                   // console.log(query);
+                   // console.log(filteredResults);
     
                     // Trả về chỉ dữ liệu món ăn, không cần thông tin khác
                     resolve(filteredResults);

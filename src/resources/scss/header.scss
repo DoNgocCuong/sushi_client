@@ -92,7 +92,7 @@
 }
 
 .header-log-link {
-    color: #ffffff;
+    color: #ede5e5;
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s;
@@ -119,4 +119,13 @@
 .header-logout-link:hover{
     color: #ff0000; /* Red color on hover */
     cursor: pointer;
+}
+
+.header-logout-link span{
+    color: #00FF00;
+}
+
+.header-log .user-name{
+    color:#9fc9db;
+    
 }

@@ -8,10 +8,10 @@ class ShoppingCartController{
 
     async rendeCartDish(req, res) {
         const {email} = req.query;
-        console.log(email);
+       // console.log(email);
         try {
             const CartDish = await ShoppingCartModel.getProductsCart(email);
-            console.log('cartdish:',CartDish)
+            //console.log('cartdish:',CartDish)
             res.json(CartDish);
         } catch (err) {
             console.error('Lỗi khi lọc sản phẩm:', err);

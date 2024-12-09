@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Set lại tên tài khoản
 const userName = sessionStorage.getItem("FullName");
-console.log(userName);
+//console.log(userName);
 if (userName !== null) {
   let login = document.querySelector(".header-log-link");
   let logout = document.querySelector(".header-logout-link");
