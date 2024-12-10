@@ -211,15 +211,21 @@ option:checked {
 
 .btnfilter-menu #button-menu {
     all: unset;
-    border: 1px solid #ccc !important;
-    border-radius: 4px;
-    padding: 5px 10px;
+    display: flex;
+     border: 1px solid #ccc !important;
+     border-radius: 4px;
+     padding: 5px 10px;
     background-color: rgba(0, 0, 0, 0);
     color: #27d60d;
-    font-size: 20px;
+    // font-size: 20px;
     transition: transform 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
-    margin-right: 3px;
+}
+
+.btnfilter-menu #button-menu p{
+    margin-right: 8px;
+    color:#27d60d;
+    font-weight: bold;
 }
 
 .btnfilter-menu .ti-search{
