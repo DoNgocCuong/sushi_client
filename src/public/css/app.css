@@ -20,7 +20,8 @@
   background-size: cover;
   /* Để hình ảnh phủ kín div */
   background-position: center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  overflow: hidden; }
 
 .header-logo {
   width: 100px;
@@ -478,6 +479,20 @@ option:checked {
   color: white;
   /* Màu chữ khi chọn */ }
 
+#button-menu {
+  border: 0px solid #ccc !important;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #08e50c;
+  font-size: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer; }
+
+.btnfilter-menu .ti-search {
+  color: #08e50c;
+  font-size: 20px; }
+
 .container-album {
   margin-top: 115px;
   display: grid;
@@ -703,3 +718,105 @@ option:checked {
 .ordernow:hover {
   background-color: #0bb31a;
   /* Màu xanh đậm khi hover */ }
+
+/* Payment Section */
+/* Tổng thể */
+.payment {
+  width: 100%;
+  max-width: 600px;
+  margin: 180px auto 50px;
+  /* Gộp margin-top và margin-bottom */
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  font-family: Arial, sans-serif; }
+
+/* Header */
+.payment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 0 20px;
+  /* Gộp margin-top và margin-bottom */ }
+
+.payment-header i {
+  font-size: 24px;
+  color: #11d424; }
+
+.payment-title p {
+  color: #35e405;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0; }
+
+.payment-header input {
+  flex: 1;
+  margin-left: 20px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  /* Đặt nền trắng để dễ nhìn */
+  color: #000;
+  /* Màu chữ đen */ }
+
+/* Container */
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; }
+
+.payment-container div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.payment-container p {
+  color: #fff;
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold; }
+
+.payment-container span {
+  font-size: 16px;
+  color: #ff5722; }
+
+/* Voucher */
+.voufcher {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Giảm khoảng cách giữa các phần tử */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #222;
+  transition: background-color 0.3s;
+  color: #fff;
+  /* Màu chữ mặc định cho voucher */ }
+
+.voufcher:hover {
+  background-color: #333; }
+
+.ti-gift {
+  all: unset;
+  font-size: 35px;
+  color: #f44336;
+  margin-right: 30px; }
+
+/* Button */
+.payment-container button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #11d424;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s; }
+
+.payment-container button:hover {
+  background-color: #0bb31a; }

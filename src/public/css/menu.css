@@ -217,3 +217,17 @@ option:checked {
   /* Màu nền khi được chọn */
   color: white;
   /* Màu chữ khi chọn */ }
+
+#button-menu {
+  border: 0px solid #ccc !important;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #08e50c;
+  font-size: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer; }
+
+.btnfilter-menu .ti-search {
+  color: #08e50c;
+  font-size: 20px; }
