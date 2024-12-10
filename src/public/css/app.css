@@ -292,10 +292,10 @@ a:hover {
   /* Căn đều các item */
   align-items: center;
   /* Căn giữa theo chiều dọc */
-  width: 100%;
-  /* Chiếm hết chiều rộng của container */
   padding: 10px 0;
-  margin-top: 30px; }
+  margin-top: 35px;
+  margin-left: 30px;
+  margin-right: 50px; }
 
 .total-select li {
   list-style: none; }
@@ -303,21 +303,16 @@ a:hover {
 .total-select li ul {
   text-align: center; }
 
-.header-menu .total-select > li {
-  width: 32%;
-  /* Chia mỗi item chiếm 1/3 chiều rộng */
+.header-menu .total-select > li ul {
   display: flex;
-  flex-direction: column;
-  /* Xếp các thẻ select theo chiều dọc */
-  align-items: flex-start;
-  /* Căn trái cho các select */
-  list-style: none; }
+  list-style: none;
+  align-items: center; }
 
 .header-menu .total-select > li span {
   font-weight: bold;
   /* Làm đậm nhãn */
   color: #e75d0c;
-  margin-bottom: 5px;
+  margin-right: 5px;
   /* Khoảng cách giữa nhãn và select */ }
 
 .header-menu .total-select > li select {
@@ -479,15 +474,17 @@ option:checked {
   color: white;
   /* Màu chữ khi chọn */ }
 
-#button-menu {
-  border: 0px solid #ccc !important;
+.btnfilter-menu #button-menu {
+  all: unset;
+  border: 1px solid #ccc !important;
   border-radius: 4px;
-  padding: 5px;
+  padding: 5px 10px;
   background-color: rgba(0, 0, 0, 0);
-  color: #08e50c;
+  color: #27d60d;
   font-size: 20px;
   transition: transform 0.3s ease, background-color 0.3s ease;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-right: 3px; }
 
 .btnfilter-menu .ti-search {
   color: #08e50c;
