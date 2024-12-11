@@ -20,5 +20,21 @@ class ShoppingCartModel {
             });
         });
     }
+
+
+    static removeProductFromCart(email,id) {
+        return new Promise((resolve, reject) => {
+            const query = `CALL XOA_MON_AN_GIO_HANG(${db.escape(email)}, ${db.escape(id)})`;
+            
+            db.query(query, (err, results) => {
+                if (err) {
+                    console.error('Lỗi SQL khi xóa món ăn:', err);
+                    return reject(err);
+                }
+                resolve(results);
+            });
+        });
+    }
+
 }
 module.exports = ShoppingCartModel;

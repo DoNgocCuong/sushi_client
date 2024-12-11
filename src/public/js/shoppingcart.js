@@ -1,7 +1,7 @@
 
 var CartApi = "http://localhost:3000/shopping_cart/api"; 
-
-console.log(sessionStorage.getItem("fullname"));
+var CartApiRemove = "http://localhost:3000/shopping_cart/api/remove";
+//console.log(sessionStorage.getItem("fullname"));
 
 
 
@@ -26,7 +26,7 @@ function renderCart(carts) {
     var listDish = document.querySelector('.shopping-cartContainer');
     var htmls = carts.map(function (dish) {
         return `
-            <li class="cart-item">
+            <li class="cart-item" data-mamon="${dish.mamon}">
                 <div class="description">
                     <div class="cart-item_img">
                         <img src="${dish.url}" alt="${dish.tenmon}">  
@@ -58,9 +58,15 @@ function renderCart(carts) {
     listDish.innerHTML = htmls.join('');
 
     // Sau khi render xong, gắn sự kiện tăng/giảm số lượng
+    attachQuantityEvents();
+    attachRemoveEvents();
+    
+}
+
+function attachQuantityEvents() {
     const quantityContainers = document.querySelectorAll(".cart-item_quantity");
 
-    quantityContainers.forEach((container) => {
+    quantityContainers.forEach(container => {
         const decreaseBtn = container.querySelector(".decrease");
         const increaseBtn = container.querySelector(".increase");
         const quantityInput = container.querySelector(".quantity-input");
@@ -80,6 +86,45 @@ function renderCart(carts) {
         });
     });
 }
+
+function handleRemoveItem(cartItem, dishId) {
+    const email = sessionStorage.getItem("email");
+
+    // Xóa món ăn khỏi giao diện
+    cartItem.remove();
+    // Gửi yêu cầu xóa đến backend (DELETE request)
+    fetch(`http://localhost:3000/shopping_cart/api/remove?email=${email}&id=${dishId}`, {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Lỗi khi xóa món ăn');
+        }
+
+        // Sau khi xóa thành công, lấy lại giỏ hàng mới
+        return fetch(`${CartApi}?email=${email}`);
+    })
+    .then(response => response.json())
+    .then(updatedCart => {
+        // Cập nhật lại giao diện với giỏ hàng mới
+        renderCart(updatedCart);
+        console.log(`Món ăn ${dishId} đã được xóa thành công trong gio hang ${email}`);
+    })
+    .catch(error => console.error('Lỗi khi gửi yêu cầu xóa:', error));
+}
+
+// Hàm gắn sự kiện xóa món ăn
+function attachRemoveEvents() {
+    const removeButtons = document.querySelectorAll('.cart-item_remove i');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const cartItem = this.closest('.cart-item');
+            const dishId = cartItem.getAttribute('data-mamon');
+            handleRemoveItem(cartItem, dishId); // Gọi hàm xóa món ăn
+        });
+    });
+}
+
 
 
 handleGetCart(renderCart);

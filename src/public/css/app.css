@@ -127,7 +127,8 @@
   background-size: cover;
   /* Để hình ảnh phủ kín div */
   background-position: center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  padding-top: 20px; }
 
 .footer-container ul:nth-child(1) {
   display: flex;
