@@ -10,7 +10,7 @@ class ShoppingCartModel {
                     return reject(err);
                 }
 
-                const cartResults = results[0]; // Giả sử dữ liệu trả về nằm ở mảng [0]
+                const cartResults = results[0]; 
                 resolve(cartResults);
             });
         });

@@ -242,9 +242,11 @@
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #fff; /* Đặt nền trắng để dễ nhìn */
-    color: #000; /* Màu chữ đen */
+    background-color: #343232; 
+    color: #fff;
 }
+
+
 
 /* Container */
 .payment-container {
@@ -311,4 +313,16 @@
 
 .payment-container button:hover {
     background-color: #0bb31a;
+}
+
+.payment-container input{
+    flex: 1;
+    //margin-left: 20px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #343232; /* Đặt nền trắng để dễ nhìn */
+    color: #fff; /* Màu chữ đen */
+
 }

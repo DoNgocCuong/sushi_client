@@ -1,10 +1,6 @@
 
 var searchApi = "http://localhost:3000/menu/api_search"; 
 var cartApi="http://localhost:3000/menu/api_cart"
-console.log(sessionStorage.getItem("email"));
-
-
-
 
 function handleCart(){
     var btnCarts=document.querySelectorAll('.addCart');
@@ -36,12 +32,9 @@ function handleCart(){
     
 }
 
-
-
-
-
 function handleGetSearch(callback) {
     var btnSearch = document.querySelector('#button-menu');
+    if (!btnSearch) return;
     btnSearch.onclick = function () {
         var branchId = document.querySelector('#type-of-branch').value;
         var dishTypeId = document.querySelector('#type-of-dish').value;
@@ -62,22 +55,31 @@ function handleGetSearch(callback) {
 
 function renderSearch(searchs) {
     var listDish = document.querySelector('.content-menu');
+    // Render danh sách món ăn
     var htmls = searchs.map(function (dish) {
+        console.log(dish.GIA);
         return `
             <li data-mamon="${dish.MAMON}">
                 <div><button class="addCart">+</button></div>
                 <div class="img-products-branch">
-                    <img src="${dish.URL}" alt="" class="img-branch">
+                    <img src="${dish.URL}" alt="${dish.TENMON}" class="img-branch">
                 </div>
                 <p>${dish.TENMON}</p>
                 <p>${dish.MOTA}</p>
-                <p>${dish.GIA}đ</p>    
+                <p>${dish.GIA}</p>    
             </li>
         `;
     });
+
+    // Cập nhật nội dung danh sách
     listDish.innerHTML = htmls.join('');
+    
+    // Xử lý giỏ hàng sau khi render
     handleCart();
 }
+
+
+
 
 handleGetSearch(renderSearch);
 handleCart();

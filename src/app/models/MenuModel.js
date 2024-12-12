@@ -77,19 +77,13 @@ class MenuModel{
     
 
     static addCarts(email,mamon){
-
         return new Promise((resolve, reject) => {
-          
-
             const query = `CALL insert_Cart(${db.escape(email)},${db.escape(mamon)})`;
-            console.log(query);
-
             db.query(query, (err, results) => {
                 if (err) {
                     console.error('Lỗi khi thực hiện truy vấn:', err);
                     reject(err);
                 } else {
-                    console.log('kq:',results );
                     resolve(results);
                 }
             });

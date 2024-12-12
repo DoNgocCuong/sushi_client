@@ -8,10 +8,8 @@ class ShoppingCartController{
 
     async rendeCartDish(req, res) {
         const {email} = req.query;
-       // console.log(email);
         try {
             const CartDish = await ShoppingCartModel.getProductsCart(email);
-            //console.log('cartdish:',CartDish)
             res.json(CartDish);
         } catch (err) {
             console.error('Lỗi khi lọc sản phẩm:', err);
@@ -20,7 +18,7 @@ class ShoppingCartController{
     }
 
     async removeCartDish(req, res) {
-        const { email,id } = req.query; // Lấy id món ăn từ params
+        const { email,id } = req.query; 
         try {
             await ShoppingCartModel.removeProductFromCart(email, id); // Gọi hàm model để xóa món ăn
             res.status(200).send({ message: 'Món ăn đã được xóa khỏi giỏ hàng.' });
@@ -31,20 +29,17 @@ class ShoppingCartController{
     }
 
     async updateCartDish(req, res) {
-        const { email, id, quantity } = req.body; // Lấy id món ăn và số lượng từ body
+        const { email, id, quantity } = req.body; 
     
         try {
             if (!email || !id || !quantity) {
                 return res.status(400).send('Thiếu thông tin yêu cầu');
             }
     
-            // Cập nhật số lượng món ăn trong cơ sở dữ liệu
             await ShoppingCartModel.updateQuantity(email, id, quantity); 
     
-            // Lấy giỏ hàng mới sau khi cập nhật
             const updatedCart = await ShoppingCartModel.getProductsCart(email);
             
-            // Trả về giỏ hàng mới
             res.status(200).json(updatedCart);  // Trả về giỏ hàng đã được cập nhật
         } catch (err) {
             console.error('Lỗi khi cập nhật số lượng món ăn:', err);

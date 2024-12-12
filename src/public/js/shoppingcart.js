@@ -2,7 +2,7 @@
 var CartApi = "http://localhost:3000/shopping_cart/api"; 
 var CartApiRemove = "http://localhost:3000/shopping_cart/api/remove";
 var CartApiUpdate = "http://localhost:3000/shopping_cart/api/update";
-
+var payment = "http://localhost:3000/paymentonline/checkout"
 
 
 
@@ -23,6 +23,12 @@ function handleGetCart(callback) {
     
 function renderCart(carts) {
     var listDish = document.querySelector('.shopping-cartContainer');
+    if(!listDish)
+        return;
+    const formatCurrency = (value) => {
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+    };
+
     var htmls = carts.map(function (dish) {
         return `
             <li class="cart-item" data-mamon="${dish.mamon}">
@@ -40,7 +46,7 @@ function renderCart(carts) {
                 </div>
 
                 <div class="cart-item_price">
-                    <p>${dish.gia}</p>
+                    <p>${formatCurrency(dish.gia)}</p>
                 </div>
                 <div class="cart-item_quantity">
                     <button class="quantity-btn decrease">-</button>
@@ -95,7 +101,6 @@ function attachQuantityEvents() {
 
 function handleUpdateQuantity(dishId, newQuantity) {
     const email = sessionStorage.getItem("email");
-    console.log(`Fontend: Thay đổi ${dishId} đã cập nhật thành ${newQuantity}`);
     // Gửi yêu cầu cập nhật đến backend
     fetch(CartApiUpdate, {
         method: 'POST', // Sử dụng POST để gửi dữ liệu
@@ -134,7 +139,7 @@ function handleRemoveItem(cartItem, dishId) {
 
     // Xóa món ăn khỏi giao diện
     cartItem.remove();
-    // Gửi yêu cầu xóa đến backend (DELETE request)
+    
     fetch(`http://localhost:3000/shopping_cart/api/remove?email=${email}&id=${dishId}`, {
         method: 'DELETE',
     })
@@ -143,7 +148,6 @@ function handleRemoveItem(cartItem, dishId) {
             throw new Error('Lỗi khi xóa món ăn');
         }
 
-        // Sau khi xóa thành công, lấy lại giỏ hàng mới
         return fetch(`${CartApi}?email=${email}`);
     })
     .then(response => response.json())
@@ -167,7 +171,6 @@ function attachRemoveEvents() {
     });
 }
 
-//gắn sự kiện update số lượng
 
 
 
