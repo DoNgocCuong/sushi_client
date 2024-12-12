@@ -1,8 +1,7 @@
 
 var CartApi = "http://localhost:3000/shopping_cart/api"; 
 var CartApiRemove = "http://localhost:3000/shopping_cart/api/remove";
-//console.log(sessionStorage.getItem("fullname"));
-
+var CartApiUpdate = "http://localhost:3000/shopping_cart/api/update";
 
 
 
@@ -45,7 +44,7 @@ function renderCart(carts) {
                 </div>
                 <div class="cart-item_quantity">
                     <button class="quantity-btn decrease">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
+                    <input type="text" class="quantity-input" value="${dish.soluong}" readonly>
                     <button class="quantity-btn increase">+</button>
                 </div>
 
@@ -60,6 +59,7 @@ function renderCart(carts) {
     // Sau khi render xong, gắn sự kiện tăng/giảm số lượng
     attachQuantityEvents();
     attachRemoveEvents();
+
     
 }
 
@@ -70,12 +70,17 @@ function attachQuantityEvents() {
         const decreaseBtn = container.querySelector(".decrease");
         const increaseBtn = container.querySelector(".increase");
         const quantityInput = container.querySelector(".quantity-input");
+        const cartItem = container.closest('.cart-item'); // Lấy cart-item chứa container
+        const dishId = cartItem.getAttribute('data-mamon'); // Lấy dishId từ data-mamon
 
         // Xử lý nút giảm
         decreaseBtn.addEventListener("click", () => {
             let currentValue = parseInt(quantityInput.value);
+        
             if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
+                const newQuantity = currentValue - 1;
+                quantityInput.value = newQuantity; // Cập nhật giao diện
+                handleUpdateQuantity(dishId, newQuantity); // Gửi request update
             }
         });
 
@@ -83,9 +88,46 @@ function attachQuantityEvents() {
         increaseBtn.addEventListener("click", () => {
             let currentValue = parseInt(quantityInput.value);
             quantityInput.value = currentValue + 1;
+            handleUpdateQuantity(dishId, currentValue + 1); // Gửi request update
         });
     });
 }
+
+function handleUpdateQuantity(dishId, newQuantity) {
+    const email = sessionStorage.getItem("email");
+    console.log(`Fontend: Thay đổi ${dishId} đã cập nhật thành ${newQuantity}`);
+    // Gửi yêu cầu cập nhật đến backend
+    fetch(CartApiUpdate, {
+        method: 'POST', // Sử dụng POST để gửi dữ liệu
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+            id: dishId,
+            quantity: newQuantity
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Lỗi khi cập nhật số lượng');
+        }
+        return response.json();
+    })
+    .then(updatedCart => {
+        console.log("Giỏ hàng đã được cập nhật:", updatedCart);
+    
+        // Kiểm tra và render lại giỏ hàng
+        if (Array.isArray(updatedCart)) {
+            renderCart(updatedCart);
+        } else {
+            console.error("Dữ liệu trả về không hợp lệ:", updatedCart);
+        }
+    })
+    
+    .catch(error => console.error('Lỗi khi gửi yêu cầu cập nhật số lượng:', error));
+}
+
 
 function handleRemoveItem(cartItem, dishId) {
     const email = sessionStorage.getItem("email");
@@ -124,6 +166,8 @@ function attachRemoveEvents() {
         });
     });
 }
+
+//gắn sự kiện update số lượng
 
 
 

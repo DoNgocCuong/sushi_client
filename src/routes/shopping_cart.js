@@ -6,8 +6,10 @@ const ShoppingCartController = require('..\\app\\controllers\\ShoppingCartContro
 
 router.get('/api', ShoppingCartController.rendeCartDish); // Hiển thị giỏ hàng
 
+
 router.delete('/api/remove', ShoppingCartController.removeCartDish);
 
+router.post('/api/update', ShoppingCartController.updateCartDish);
 
 router.get('/', ShoppingCartController.index); // Hiển thị giỏ hàng
 

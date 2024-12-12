@@ -64,8 +64,8 @@ function renderSearch(searchs) {
     var listDish = document.querySelector('.content-menu');
     var htmls = searchs.map(function (dish) {
         return `
-            <li>
-                <div><button>+</button></div>
+            <li data-mamon="${dish.MAMON}">
+                <div><button class="addCart">+</button></div>
                 <div class="img-products-branch">
                     <img src="${dish.URL}" alt="" class="img-branch">
                 </div>
@@ -76,6 +76,7 @@ function renderSearch(searchs) {
         `;
     });
     listDish.innerHTML = htmls.join('');
+    handleCart();
 }
 
 handleGetSearch(renderSearch);

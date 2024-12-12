@@ -29,6 +29,30 @@ class ShoppingCartController{
             res.status(500).send('Lỗi khi xóa món ăn');
         }
     }
+
+    async updateCartDish(req, res) {
+        const { email, id, quantity } = req.body; // Lấy id món ăn và số lượng từ body
+    
+        try {
+            if (!email || !id || !quantity) {
+                return res.status(400).send('Thiếu thông tin yêu cầu');
+            }
+    
+            // Cập nhật số lượng món ăn trong cơ sở dữ liệu
+            await ShoppingCartModel.updateQuantity(email, id, quantity); 
+    
+            // Lấy giỏ hàng mới sau khi cập nhật
+            const updatedCart = await ShoppingCartModel.getProductsCart(email);
+            
+            // Trả về giỏ hàng mới
+            res.status(200).json(updatedCart);  // Trả về giỏ hàng đã được cập nhật
+        } catch (err) {
+            console.error('Lỗi khi cập nhật số lượng món ăn:', err);
+            res.status(500).send('Lỗi khi cập nhật số lượng món ăn');
+        }
+    }
+    
+    
 }
 
 
