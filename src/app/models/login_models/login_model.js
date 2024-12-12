@@ -15,7 +15,7 @@ const checkAccount = function (userName, password, callback) {
 
     if (results.length === 0) return callback(null, null);
 
-    const hashedPassword = results[0].password;
+    const hashedPassword = results[0].MATKHAU;
 
     bcrypt.compare(password, hashedPassword, (err, isMatch) => {
       if (err) {
