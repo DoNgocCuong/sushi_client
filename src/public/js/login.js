@@ -43,12 +43,9 @@ function btnLogin() {
       .then(function (data) {
         userNameInput.classList.remove("error");
         passwordInput.classList.remove("error");
-        //Lưu tên tài khoản vào biến môi trường để hiển thị ở trang home
         sessionStorage.setItem("FullName", data.fullName);
         sessionStorage.setItem("email", userName);
-        // set lại bit trạng tháis
-        //console.log(data.fullName);
-        // Di chuyển đến trong home
+
         window.location.href = "/";
       })
       .catch(function (error) {
@@ -101,21 +98,29 @@ function btnRegister() {
     const confirm = confirmInput.value;
 
     switch (true) {
-      case phone === "":
-        alert("Vui lòng nhập số điện thoại");
-        phoneInput.classList.add("error");
-        return;
       case name === "":
         alert("Vui lòng nhập tên");
         nameInput.classList.add("error");
         return;
-      case email === "":
-        alert("Vui lòng nhập email");
-        emailInput.classList.add("error");
-        return;
       case citizenID === "":
         alert("Vui lòng nhập số căn cước công dân");
         citizenIDInput.classList.add("error");
+        return;
+      case citizenID.length > 12:
+        alert("Số căn cước công dân quá dài");
+        citizenIDInput.classList.add("error");
+        return;
+      case phone === "":
+        alert("Vui lòng nhập số điện thoại");
+        phoneInput.classList.add("error");
+        return;
+      case phone.length > 10:
+        alert("Số điện thoại quá dài");
+        phoneInput.classList.add("error");
+        return;
+      case email === "":
+        alert("Vui lòng nhập email");
+        emailInput.classList.add("error");
         return;
       case !checkEmail(email):
         alert("Vui lòng nhập đúng định dạng email (VD: cuong999@gmail.com)");
@@ -330,8 +335,8 @@ function noSpace(input) {
 
 // Định dạng email
 function checkEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email); // Trả về true nếu email hợp lệ
+  const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+  return gmailRegex.test(email);
 }
 // Main
 removeError();

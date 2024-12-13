@@ -19,7 +19,7 @@ const checkAccount = function (userName, callback) {
 };
 
 const commitSave = function (userName, password, callback) {
-  const query = "UPDATE KHACHHANG SET password = ? WHERE email = ?";
+  const query = "UPDATE KHACHHANG SET MATKHAU = ? WHERE email = ?";
 
   db.execute(query, [password, userName], (err, results) => {
     if (err) {

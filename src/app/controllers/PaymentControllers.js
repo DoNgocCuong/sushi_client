@@ -17,7 +17,7 @@ class PaymentControllers {
             // Kiểm tra kết quả trả về từ PaymentModel
             console.log('Kết quả trả về từ PaymentModel:', paymentResult);
     
-            // Nếu `paymentResult` là mảng lồng nhau, lấy object đầu tiên
+           
             if (Array.isArray(paymentResult) && Array.isArray(paymentResult[0])) {
                 const paymentData = paymentResult[0][0]; // Lấy phần tử đầu tiên
                 console.log('Dữ liệu gửi đến frontend:', paymentData);

@@ -45,6 +45,9 @@ const authRegister = function (req, res) {
           res.status(201).json({ message: "Đăng ký thành công" });
         }
       );
+
+      // Tạo thẻ cho người dùng mới
+      registerModel.createCard;
     });
   });
 };
