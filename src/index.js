@@ -1,5 +1,5 @@
 const express = require("express");
-const port = 3001;
+const port = 3000;
 const morgan = require("morgan");
 const handlebars = require("express-handlebars");
 const path = require("path");

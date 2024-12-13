@@ -20,7 +20,7 @@ class PaymentControllers {
            
             if (Array.isArray(paymentResult) && Array.isArray(paymentResult[0])) {
                 const paymentData = paymentResult[0][0]; // Lấy phần tử đầu tiên
-                console.log('Dữ liệu gửi đến frontend:', paymentData);
+              //  console.log('Dữ liệu gửi đến frontend:', paymentData);
     
                 // Trả dữ liệu JSON
                 return res.json(paymentData || { error: 'Không có dữ liệu thanh toán.' });

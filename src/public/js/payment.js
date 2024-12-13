@@ -51,7 +51,7 @@ function renderPayment(result) {
         </div>
         <div>
             <p>Khuyến Mãi</p>
-            <span>Hạng ${result.Hang} (${result.PhanTramKhuyenMai}%)</span>
+            <span>${result.PhanTramKhuyenMai}% (${result.Hang})</span>
         </div>
         <div>
             <p>Phí giao hàng</p>
