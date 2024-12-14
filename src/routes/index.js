@@ -1,6 +1,6 @@
 const menuRouter = require(".\\menu");
 const homeRouter = require(".\\home");
-const contactRouter = require(".\\contact");
+const recruitRouter = require(".\\recruit");
 const albumRouter = require(".\\album");
 
 const shopping_cartRouter = require(".\\shopping_cart");
@@ -11,7 +11,7 @@ const registerRouter = require(".\\login_routes\\register_route");
 
 function route(app) {
   app.use("/menu", menuRouter);
-  app.use("/contact", contactRouter);
+  app.use("/recruit", recruitRouter);
   app.use("/album", albumRouter);
   app.use("/shopping_cart", shopping_cartRouter);
   app.use("/paymentonline", paymentRouter);
