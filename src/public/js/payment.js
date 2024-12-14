@@ -1,10 +1,9 @@
 var paymentApi = "http://localhost:3000/paymentonline/api"
 
-
+var payConfirmApi="http://localhost:3000/paymentonline/api/confirm"
 function handleGetPayment(callback) {
     document.addEventListener("DOMContentLoaded", function () {
         const email = sessionStorage.getItem("email");
-        console.log(email);
         if(!email)
             return;
         fetch(`${paymentApi}?email=${sessionStorage.getItem("email")}`)
@@ -61,13 +60,46 @@ function renderPayment(result) {
             <p>Số tiền thanh toán</p>
             <span>${formatCurrency(totalWithShipping)}</span>
         </div>
-        <input type="text" placeholder="Thêm ghi chú" />
-        <button>Xác nhận thanh toán</button>
+        <input name="note_payment" type="text" placeholder="Thêm ghi chú" />
+        <button id="payment">Xác nhận thanh toán</button>
     `;
 
     listPayment.innerHTML = htmls;
+    handleConfirm();
 }
 
+function handleConfirm(){
+    var btnPay=document.querySelector('#payment');
+    if(!btnPay) return;
+    btnPay.onclick=function(){
+        alert(1111);
+        var note=document.querySelector('input[name="note_payment"]').value;
+        var address=document.querySelector('input[name="address-payment"]').value;
+        console.log(note);
+            console.log(address);
+        fetch(payConfirmApi,{
+            method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    note: note,
+                    email:sessionStorage.getItem("email"),
+                    address:address,
+                    branchID:sessionStorage.getItem("branchID")
+                })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert('thanh toán oke.')  
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('thanh toán không oke');
+        });
 
+    }
+}
 
 handleGetPayment(renderPayment);
