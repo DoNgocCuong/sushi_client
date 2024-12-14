@@ -72,7 +72,6 @@ function handleConfirm(){
     var btnPay=document.querySelector('#payment');
     if(!btnPay) return;
     btnPay.onclick=function(){
-        alert(1111);
         var note=document.querySelector('input[name="note_payment"]').value;
         var address=document.querySelector('input[name="address-payment"]').value;
         console.log(note);
@@ -103,3 +102,5 @@ function handleConfirm(){
 }
 
 handleGetPayment(renderPayment);
+
+
