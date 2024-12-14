@@ -39,7 +39,7 @@ function handleGetSearch(callback) {
         var branchId = document.querySelector('#type-of-branch').value;
         var dishTypeId = document.querySelector('#type-of-dish').value;
         var priceRange = document.querySelector('#type-of-price').value;
-
+        sessionStorage.setItem('branchID',branchId);
         fetch(`${searchApi}?branchId=${branchId}&dishTypeId=${dishTypeId}&priceRange=${priceRange}`)
             .then(function (response) {
                 return response.json();  
