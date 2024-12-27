@@ -18,6 +18,7 @@ class PaymentModel {
     static confirmPayment(note,email,address,branchID) {
         return new Promise((resolve, reject) => {
             const query = `CALL xuli_online_datve(${db.escape(email)},${db.escape(branchID)},${db.escape(note)},${db.escape(address)})`;
+            
             db.query(query, (err, results) => {
                 if (err) {
                     console.error('Lỗi SQL khi thanh toán:', err);

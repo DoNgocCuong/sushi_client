@@ -42,7 +42,7 @@ function renderCart(carts) {
                 </div>
 
                 <div class="cart-item_kind">
-                    <span>${dish.maloai}</span>
+                    <span>${dish.tenloai}</span>
                 </div>
 
                 <div class="cart-item_price">

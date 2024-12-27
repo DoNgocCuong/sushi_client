@@ -92,6 +92,7 @@ function handleConfirm(){
         .then(data => {
             console.log('Success:', data);
             alert('thanh toán oke.')  
+            window.location.href = 'http://localhost:3000/';
         })
         .catch((error) => {
             console.error('Error:', error);

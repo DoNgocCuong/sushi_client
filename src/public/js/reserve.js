@@ -94,6 +94,7 @@ function handleReserve() {
         .then(data => {
             console.log('Success:', data);
             alert('Đặt bàn thành công.');
+            window.location.href = 'http://localhost:3000/';
         })
         .catch((error) => {
             alert('Đặt bàn không thành công. Vui lòng thử lại.');
